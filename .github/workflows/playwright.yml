@@ -23,9 +23,10 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+      - name: Install wait-on
+        run: npm install --save-dev wait-on
 
-          - name: Start server
+      - name: Start server
         run: npm start &
         env:
           PORT: 3000
