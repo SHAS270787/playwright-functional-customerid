@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Account</title>
+</head>
+<body>
+  <h1>Create New Account</h1>
+  <form id="new-account-form">
+    <label for="customerId">Customer ID:</label>
+    <input type="text" id="customerId" name="customerId">
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Message hidden by default -->
+  <p id="message" style="display: none;"></p>
+
+  <script>
+    const form = document.getElementById('new-account-form');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const customerId = form.customerId.value.trim();
+
+      // Show message element
+      message.style.display = 'block';
+
+      if (customerId.length === 0) {
+        message.textContent = 'Customer ID is required!';
+        message.style.color = 'red';
+        return;
+      }
+
+      message.textContent = `Customer ID ${customerId} created successfully!`;
+      message.style.color = 'green';
+      form.reset();
+    });
+  </script>
+</body>
+</html>

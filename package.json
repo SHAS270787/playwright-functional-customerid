@@ -1,0 +1,22 @@
+{
+    "name": "playwright-functional-customerid",
+    "version": "1.0.0",
+    "description": "Playwright functional test project for Customer ID",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "test": "npx playwright test"
+    },
+    "dependencies": {
+        "express": "^4.21.2"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.54.1"
+    },
+    "directories": {
+        "test": "tests"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
