@@ -3,11 +3,9 @@ name: Playwright Tests
 on:
   push:
     branches:
-      - main
       - functional-tests-setup
   pull_request:
     branches:
-      - main
       - functional-tests-setup
 
 jobs:
@@ -15,24 +13,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      # 1. Checkout the repo
+      - name: Checkout code
+        uses: actions/checkout@v3
 
+      # 2. Set up Node.js
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
 
+      # 3. Install dependencies
       - name: Install dependencies
         run: npm install
 
+      # 4. Install Playwright browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install
+
+      # 5. Run Playwright tests
       - name: Run Playwright tests
-        run: |
-          npx playwright test --reporter=html || true
-      
-      - name: Upload Playwright Test Report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-report
-          path: playwright-report/
+        run: npx playwright test
