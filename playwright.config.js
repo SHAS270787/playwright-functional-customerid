@@ -1,6 +1,7 @@
 // @ts-check
 const { defineConfig } = require('@playwright/test');
 
+
 module.exports = defineConfig({
   testDir: './tests',
   use: {
@@ -12,4 +13,10 @@ module.exports = defineConfig({
   },
   timeout: 30 * 1000,
   reporter: 'list',
+
+  webServer: {
+    command: 'node server.js',  // your server start command
+    port: 3000,
+    reuseExistingServer: !process.env.CI,  // reuse if local, always start in CI
+  },
 });
